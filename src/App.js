@@ -15,7 +15,6 @@ function App() {
     fetchAlbumData();
   }, []);
 
-  // what is the difference between function declaration vs expression?
   function fetchAlbumData() {
     fetch('https://jsonplaceholder.typicode.com/photos')
       .then(res => res.json())
@@ -108,7 +107,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <button onClick={() => console.log(data)}>print data</button> */}
       <Header
         dataAvailable={data.length ? true : false}
         handlePhotoAdd={handlePhotoAdd}
