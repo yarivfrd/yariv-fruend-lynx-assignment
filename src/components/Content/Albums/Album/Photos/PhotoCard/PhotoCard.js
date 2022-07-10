@@ -1,5 +1,13 @@
 import './PhotoCard.scss';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
+
+// Only re-render if title content was changed
+function titleChanged(prevProps, nextProps) {
+    if (prevProps.title === nextProps.title) {
+        return true;
+    }
+    return false;
+}
 
 function PhotoCard({
     id,
@@ -14,6 +22,7 @@ function PhotoCard({
     const [lastTitle, setLastTitle] = useState(title);
     const titleEditRef = useRef(null);
 
+    // 'Enter' to save title, 'Esc' to cancel title edit
     function handleKeyDown(e) {
         if (e.keyCode === 13) {
             e.target.blur();
@@ -23,13 +32,13 @@ function PhotoCard({
         }
     }
 
+    // Click outside textarea to save
     function handleTitleBlur(e) {
         setTimeout(() => {
             if (e.target.value !== lastTitle) {
                 handleTitleChange(id, currentTitle);
             }
         }, 50);
-
     }
 
     function handleTitleFocus(e) {
@@ -40,13 +49,8 @@ function PhotoCard({
         setCurrentTitle(e.target.value);
     }
 
-    function handleMouseOver() {
-        console.log('mouse over');
-    }
-
     return (
-        <div className="PhotoCard" onMouseOver={handleMouseOver}>
-            {console.log(`rendered PhotoCard ${id}`)}
+        <div className="PhotoCard">
             <img
                 src={thumbnailUrl}
                 alt={title}
@@ -63,4 +67,5 @@ function PhotoCard({
         </div>
     )
 }
-export default PhotoCard
+
+export default memo(PhotoCard, titleChanged);

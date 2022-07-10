@@ -20,7 +20,6 @@ function App() {
     fetch('https://jsonplaceholder.typicode.com/photos')
       .then(res => res.json())
       .then(resData => {
-        // console.log(resData);
         setData(resData);
       }).catch(e => {
         console.error(`Error retriving album data: ${e}`);
@@ -28,7 +27,6 @@ function App() {
   }
 
   function handleTitleChange(id, val) {
-    console.log('updating title...');
     fetch(`https://jsonplaceholder.typicode.com/photos/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -41,7 +39,6 @@ function App() {
     })
       .then(res => res.json())
       .then(resData => {
-        console.log('title updated!');
         setData(prevData => {
           const updatedData = [...prevData];
           return updatedData.map(item => {
