@@ -1,6 +1,5 @@
 import './PhotoCard.scss';
 import { useState, useEffect, useRef } from 'react';
-import OutsideAlerter from './OutsideAlerter/OutsideAlerter';
 
 function PhotoCard({
     id,
@@ -41,9 +40,13 @@ function PhotoCard({
         setCurrentTitle(e.target.value);
     }
 
+    function handleMouseOver() {
+        console.log('mouse over');
+    }
+
     return (
-        <div className="PhotoCard">
-            {id === 1 ? console.log('render photo 1') : ''}
+        <div className="PhotoCard" onMouseOver={handleMouseOver}>
+            {console.log(`rendered PhotoCard ${id}`)}
             <img
                 src={thumbnailUrl}
                 alt={title}
