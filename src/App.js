@@ -37,16 +37,26 @@ function App() {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
-      .then(res => res.json())
       .then(resData => {
         setData(prevData => {
-          const updatedData = [...prevData];
-          return updatedData.map(item => {
+          return prevData.map(item => {
             if (item.id === resData.id) {
-              return {...item, title: resData.title};
+              return { ...item, title: resData.title };
             }
             return item;
           });
+        });
+      });
+  }
+
+  function handlePhotoDelete(id) {
+    fetch(`https://jsonplaceholder.typicode.com/photos/${id}`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(() => {
+        setData(prevData => {
+          return prevData.filter(item => item.id !== id);
         });
       });
   }
@@ -83,6 +93,7 @@ function App() {
         albumsData={data}
         navIndex={navIndex}
         handleTitleChange={handleTitleChange}
+        handlePhotoDelete={handlePhotoDelete}
         handleNavBack={handleNavBack}
         handleNavNext={handleNavNext}
         showModal={showModal}

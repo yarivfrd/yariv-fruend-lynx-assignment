@@ -5,6 +5,7 @@ function Photos({
   albumPhotos,
   showModal,
   handleTitleChange,
+  handlePhotoDelete
 }) {
   return (
     <div className="Photos">
@@ -18,6 +19,7 @@ function Photos({
                     thumbnailUrl={photo.thumbnailUrl}
                     imgUrl={photo.url}
                     handleTitleChange={handleTitleChange}
+                    handlePhotoDelete={handlePhotoDelete}
                     showModal={showModal}
                 />
                 )

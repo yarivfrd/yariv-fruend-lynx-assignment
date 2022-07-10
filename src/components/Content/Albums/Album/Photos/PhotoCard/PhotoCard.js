@@ -1,12 +1,13 @@
-import './PhotoCard.scss';
+import { FaTrashAlt } from 'react-icons/fa';
 import { useState, useEffect, useRef, memo } from 'react';
+import './PhotoCard.scss';
 
-// Only re-render if title content was changed
+// Only re-render if title prop content was changed
 function titleChanged(prevProps, nextProps) {
-    if (prevProps.title === nextProps.title) {
-        return true;
+    if (prevProps.title !== nextProps.title) {
+        return false;
     }
-    return false;
+    return true;
 }
 
 function PhotoCard({
@@ -15,11 +16,14 @@ function PhotoCard({
     thumbnailUrl,
     imgUrl,
     showModal,
-    handleTitleChange
+    handleTitleChange,
+    handlePhotoDelete
 }) {
 
     const [currentTitle, setCurrentTitle] = useState(title);
     const [lastTitle, setLastTitle] = useState(title);
+    const [deleteButtonVisible, setDeleteButtonVisible] = useState(false);
+
     const titleEditRef = useRef(null);
 
     // 'Enter' to save title, 'Esc' to cancel title edit
@@ -49,8 +53,21 @@ function PhotoCard({
         setCurrentTitle(e.target.value);
     }
 
+    function handleMouseLeave() {
+        setDeleteButtonVisible(false);
+    }
+
+    function handleMouseOver() {
+        setDeleteButtonVisible(true);
+    }
+
     return (
-        <div className="PhotoCard">
+        <div
+            className="PhotoCard"
+            onMouseLeave={handleMouseLeave}
+            onMouseOver={handleMouseOver}
+        >
+            {/* {console.log(`render photocard ${id}`)} */}
             <img
                 src={thumbnailUrl}
                 alt={title}
@@ -64,6 +81,14 @@ function PhotoCard({
                 onBlur={e => handleTitleBlur(e)}
                 onKeyDown={e => handleKeyDown(e)}
             />
+            {
+                deleteButtonVisible &&
+                <FaTrashAlt
+                    className='delete-btn'
+                    onClick={() => handlePhotoDelete(id)}
+                    role="button"
+                />
+            }
         </div>
     )
 }

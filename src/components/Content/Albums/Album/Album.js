@@ -4,6 +4,7 @@ import Photos from "./Photos/Photos";
 function Album({
   albumData: [albumId, albumPhotos],
   handleTitleChange,
+  handlePhotoDelete,
   showModal
 }) {
   return (
@@ -12,6 +13,7 @@ function Album({
         <Photos
           albumPhotos={albumPhotos}
           handleTitleChange={handleTitleChange}
+          handlePhotoDelete={handlePhotoDelete}
           showModal={showModal}
         />
     </div>

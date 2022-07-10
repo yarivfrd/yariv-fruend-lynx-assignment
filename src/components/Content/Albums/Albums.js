@@ -6,6 +6,7 @@ function Albums({
     albumsData,
     navIndex,
     handleTitleChange,
+    handlePhotoDelete,
     handleNavBack,
     handleNavNext,
     showModal
@@ -25,6 +26,7 @@ function Albums({
                                     key={album[0]}
                                     albumData={album}
                                     handleTitleChange={handleTitleChange}
+                                    handlePhotoDelete={handlePhotoDelete}
                                     showModal={showModal}
                                 />
                             )

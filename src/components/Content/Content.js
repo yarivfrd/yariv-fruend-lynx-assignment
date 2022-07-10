@@ -4,6 +4,7 @@ function Content({
   albumsData,
   navIndex,
   handleTitleChange,
+  handlePhotoDelete,
   handleNavBack,
   handleNavNext,
   showModal
@@ -15,6 +16,7 @@ function Content({
         albumsData={albumsData}
         navIndex={navIndex}
         handleTitleChange={handleTitleChange}
+        handlePhotoDelete={handlePhotoDelete}
         handleNavBack={handleNavBack}
         handleNavNext={handleNavNext}
         showModal={showModal}
