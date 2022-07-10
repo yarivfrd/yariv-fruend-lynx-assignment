@@ -19,7 +19,7 @@ function Navigation({
             <div className="nav-index">
                 {navIndex}
             </div>
-            {navIndex <= albums.length / 2 - 1 ?
+            {navIndex <= albums.length ?
                 <MdNavigateNext
                     className='nav-btn'
                     onClick={handleNavNext}
