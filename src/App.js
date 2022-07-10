@@ -42,7 +42,9 @@ function App() {
       .then(res => res.json())
       .then(resData => {
         setData(prevData => [...prevData, {...resData}]);
-      });
+      }).catch(e => {
+        console.error(`Error adding new photo: ${e}`);
+      });;
   }
 
   function handleTitleChange(id, val) {
@@ -66,7 +68,9 @@ function App() {
             return item;
           });
         });
-      });
+      }).catch(e => {
+        console.error(`Error changing title for photo ${id}: ${e}`);
+      });;
   }
 
   function handlePhotoDelete(id) {
@@ -77,25 +81,21 @@ function App() {
         setData(prevData => {
           return prevData.filter(item => item.id !== id);
         });
-      });
+      }).catch(e => {
+        console.error(`Error deleting photo ${id}: ${e}`);
+      });;
   }
 
   function handleNavBack() {
     setNavIndexModifier(navIndexModifier - 1);
     setNavIndex(navIndex - 1);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo(0, 0);
   }
 
   function handleNavNext() {
     setNavIndexModifier(navIndexModifier + 1);
     setNavIndex(navIndex + 1);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo(0, 0);
   }
 
   function showModal(title, imgUrl) {
@@ -109,7 +109,10 @@ function App() {
   return (
     <div className="App">
       {/* <button onClick={() => console.log(data)}>print data</button> */}
-      <Header handlePhotoAdd={handlePhotoAdd}/>
+      <Header
+        dataAvailable={data.length ? true : false}
+        handlePhotoAdd={handlePhotoAdd}
+      />
       <Content
         albumsData={data}
         navIndex={navIndex}

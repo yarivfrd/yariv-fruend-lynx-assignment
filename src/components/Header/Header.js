@@ -1,12 +1,13 @@
 import './Header.scss';
 
 function Header({
-  handlePhotoAdd
+  handlePhotoAdd,
+  dataAvailable
 }) {
   return (
     <header className="Header">
       <h1>Photo Album</h1>
-      <button className='add-btn' onClick={handlePhotoAdd}>Add Photo +</button>
+      {dataAvailable && <button className='add-btn' onClick={handlePhotoAdd}>Add Photo +</button>}
     </header>
   )
 }
