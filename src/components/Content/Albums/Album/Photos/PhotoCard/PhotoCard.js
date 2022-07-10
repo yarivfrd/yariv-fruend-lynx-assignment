@@ -1,5 +1,5 @@
 import { FaTrashAlt } from 'react-icons/fa';
-import { useState, useEffect, useRef, memo } from 'react';
+import { useState, useRef, memo } from 'react';
 import './PhotoCard.scss';
 
 // Only re-render if title prop content was changed
