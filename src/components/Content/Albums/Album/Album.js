@@ -9,7 +9,7 @@ function Album({
 }) {
   return (
     <div className="Album">
-        <h3 className="album-title">Album {albumId}</h3>
+        <h3 className="album-title">#{albumId}</h3>
         <Photos
           albumPhotos={albumPhotos}
           handleTitleChange={handleTitleChange}

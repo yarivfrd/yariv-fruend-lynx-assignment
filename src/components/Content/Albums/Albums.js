@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import Album from './Album/Album';
+import Navigation from './Navigation/Navigation';
 
 function Albums({
     albumsData,
@@ -34,27 +34,14 @@ function Albums({
                         }
                     })
                 }
-                <div className="navigation">
-                    {navIndex > 1 ?
-                    <MdNavigateBefore
-                        className='nav-btn'
-                        onClick={handleNavBack}
-                        role="button"
-                    />
-                    : ''}
-                    <div className="nav-index">
-                        {navIndex}
-                    </div>
-                    {navIndex <= albums.length / 2 - 1 ?
-                    <MdNavigateNext
-                        className='nav-btn'
-                        onClick={handleNavNext}
-                        role="button"
-                    />
-                    : ''}
-                </div>
+                <Navigation
+                    navIndex={navIndex}
+                    handleNavBack={handleNavBack}
+                    handleNavNext={handleNavNext}
+                    albums={albums}
+                />
             </div>
-          )
+        )
     } else {
         return 'Loading Albums...';
     }

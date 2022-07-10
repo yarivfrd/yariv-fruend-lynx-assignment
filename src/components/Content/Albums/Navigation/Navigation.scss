@@ -1,0 +1,17 @@
+.Navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+
+    .nav-btn {
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .nav-index {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0 10px;
+    }
+}
