@@ -6,6 +6,7 @@
     position: fixed;
     inset: 0;
     backdrop-filter: blur(3px) brightness(70%);
+    z-index: 3;
 
     .inner {
         position: relative;
