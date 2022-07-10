@@ -27,6 +27,25 @@ function App() {
       });
   }
 
+  function handlePhotoAdd() {
+    fetch(`https://jsonplaceholder.typicode.com/photos`, {
+      method: 'POST',
+      body: JSON.stringify({
+        albumId: 101,
+        title: "New Photo",
+        url: "https://via.placeholder.com/600/92c952",
+        thumbnailUrl: "https://via.placeholder.com/150/92c952"
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then(res => res.json())
+      .then(resData => {
+        setData(prevData => [...prevData, {...resData}]);
+      });
+  }
+
   function handleTitleChange(id, val) {
     fetch(`https://jsonplaceholder.typicode.com/photos/${id}`, {
       method: 'PUT',
@@ -90,8 +109,8 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => console.log(data)}>print data</button>
-      <Header />
+      {/* <button onClick={() => console.log(data)}>print data</button> */}
+      <Header handlePhotoAdd={handlePhotoAdd}/>
       <Content
         albumsData={data}
         navIndex={navIndex}
