@@ -38,6 +38,7 @@ function App() {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
+      .then(res => res.json())
       .then(resData => {
         setData(prevData => {
           return prevData.map(item => {
@@ -54,7 +55,6 @@ function App() {
     fetch(`https://jsonplaceholder.typicode.com/photos/${id}`, {
       method: 'DELETE'
     })
-      .then(res => res.json())
       .then(() => {
         setData(prevData => {
           return prevData.filter(item => item.id !== id);
