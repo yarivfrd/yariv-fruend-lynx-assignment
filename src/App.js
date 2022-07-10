@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 import Content from './components/Content/Content';
-import Footer from './components/Footer/Footer';
 import Modal from './components/Modal/Modal';
 import './App.scss';
 
@@ -121,7 +120,6 @@ function App() {
         handleNavNext={handleNavNext}
         showModal={showModal}
       />
-      <Footer />
       {modalData ? <Modal title={modalData.title} imgUrl={modalData.imgUrl} hideModal={hideModal} /> : ''}
     </div>
   );

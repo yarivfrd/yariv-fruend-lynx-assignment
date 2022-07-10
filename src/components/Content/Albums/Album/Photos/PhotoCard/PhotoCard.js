@@ -67,7 +67,6 @@ function PhotoCard({
             onMouseLeave={handleMouseLeave}
             onMouseOver={handleMouseOver}
         >
-            {/* {console.log(`render photocard ${id}`)} */}
             <img
                 src={thumbnailUrl}
                 alt={title}
