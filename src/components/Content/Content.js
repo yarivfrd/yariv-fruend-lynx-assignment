@@ -3,6 +3,7 @@ import Albums from "./Albums/Albums";
 function Content({
   albumsData,
   navIndex,
+  navIndexModifier,
   handleTitleChange,
   handlePhotoDelete,
   handleNavBack,
@@ -15,6 +16,7 @@ function Content({
       <Albums
         albumsData={albumsData}
         navIndex={navIndex}
+        navIndexModifier={navIndexModifier}
         handleTitleChange={handleTitleChange}
         handlePhotoDelete={handlePhotoDelete}
         handleNavBack={handleNavBack}

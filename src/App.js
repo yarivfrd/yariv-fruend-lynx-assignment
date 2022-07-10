@@ -9,6 +9,7 @@ function App() {
 
   const [data, setData] = useState([]);
   const [navIndex, setNavIndex] = useState(1);
+  const [navIndexModifier, setNavIndexModifier] = useState(0);
   const [modalData, setModalData] = useState(null);
 
   useEffect(() => {
@@ -62,6 +63,7 @@ function App() {
   }
 
   function handleNavBack() {
+    setNavIndexModifier(navIndexModifier - 1);
     setNavIndex(navIndex - 1);
     window.scrollTo({
       top: 0,
@@ -70,6 +72,7 @@ function App() {
   }
 
   function handleNavNext() {
+    setNavIndexModifier(navIndexModifier + 1);
     setNavIndex(navIndex + 1);
     window.scrollTo({
       top: 0,
@@ -92,6 +95,7 @@ function App() {
       <Content
         albumsData={data}
         navIndex={navIndex}
+        navIndexModifier={navIndexModifier}
         handleTitleChange={handleTitleChange}
         handlePhotoDelete={handlePhotoDelete}
         handleNavBack={handleNavBack}

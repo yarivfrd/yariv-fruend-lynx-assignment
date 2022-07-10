@@ -5,6 +5,7 @@ import Album from './Album/Album';
 function Albums({
     albumsData,
     navIndex,
+    navIndexModifier,
     handleTitleChange,
     handlePhotoDelete,
     handleNavBack,
@@ -20,7 +21,7 @@ function Albums({
                 {
                     albums.map(album => {
                         const albumId = Number(album[0]);
-                        if (albumId === navIndex || albumId === navIndex + 1) {
+                        if (albumId === navIndex + navIndexModifier || albumId === (navIndex + navIndexModifier) + 1) {
                             return (
                                 <Album
                                     key={album[0]}
